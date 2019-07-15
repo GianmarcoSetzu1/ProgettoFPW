@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -27,7 +28,7 @@ public class ValutazioniFactory {
         return singleton;
     }
     
-    public List<Valutazioni> getValutazioni() {
+    public List<Valutazioni> getValutazioni() throws ParseException{
 
         List<Valutazioni> valutazioni = new ArrayList<>();
         
@@ -60,7 +61,7 @@ public class ValutazioniFactory {
         
         return valutazioni;
     }
-    public List<Valutazioni> getValutazioniArticolo(Articoli a) {
+    public List<Valutazioni> getValutazioniArticolo(Articoli a) throws ParseException {
         List<Valutazioni> valutazioniAutore = new ArrayList<>();
         List<Valutazioni> tutteValutazioni = this.getValutazioni();
             for(Valutazioni l : tutteValutazioni){
@@ -71,7 +72,7 @@ public class ValutazioniFactory {
             return valutazioniAutore;
     }
         
-    public Valutazioni getValutazioniId(int id){
+    public Valutazioni getValutazioniId(int id) throws ParseException{
         List<Valutazioni> tutteValutazioni = this.getValutazioni();
         for(Valutazioni l : tutteValutazioni){
             if(l.getId() == id){
@@ -82,7 +83,7 @@ public class ValutazioniFactory {
         return null;
     }
     
-    public List<Valutazioni> getValutazioniByVoto(int v) {
+    public List<Valutazioni> getValutazioniByVoto(int v) throws ParseException{
         List<Valutazioni> valutazioniAutore = new ArrayList<>();
         List<Valutazioni> tutteValutazioni = this.getValutazioni();
             for(Valutazioni l : tutteValutazioni){

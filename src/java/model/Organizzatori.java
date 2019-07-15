@@ -9,13 +9,12 @@ package model;
  *
  * @author Fausto
  */
-public class Autori {
+public class Organizzatori {
     private int id;
     private String nome;
     private String cognome;
     private String email;
     private String password;
-    private String foto;
 
     public int getId() {
         return id;
@@ -56,16 +55,6 @@ public class Autori {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
     
-    public boolean equals(Autori a){
-        return this.id == a.id;
-    }
 }
+

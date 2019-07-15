@@ -6,8 +6,11 @@
 package model;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 /**
  *
@@ -17,8 +20,11 @@ public class Articoli {
     private int id;
     private String titolo;
     private List<Autori> autore;
+    private Date data;
+    private String immagine;
     private String testo;
     private String categorie;
+    private String stato;
 
     public Articoli() {
         this.autore = new ArrayList<>();
@@ -43,11 +49,59 @@ public class Articoli {
     public List<Autori> getAutore() {
         return autore;
     }
-
+    public void addAutore(Autori autore) {
+        boolean contains=false;
+        for (Autori t : this.autore) {
+            if (t.equals(autore))
+                contains=true;
+        }
+        if (!contains)
+             this.autore.add(autore);
+    }
+    
+    public void removeAutore (Autori autore) {
+        List<Autori> autori = new ArrayList<>();
+        for (Autori a : this.getAutore())
+            if (!(a.equals(autore)))
+                autori.add(a);
+        this.autore=autori;
+                
+    }
+    
     public void setAutore(List<Autori> autore) {
         this.autore = autore;
     }
 
+    public Date getData() {
+        return data;
+    }
+    
+    public String getDataString() {
+        SimpleDateFormat sdf = new SimpleDateFormat();
+        sdf.applyPattern("yyyy/MM/dd");
+        String data = sdf.format(this.data);
+        return data;
+    }
+    
+    public void setDataString(String data) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat();
+        sdf.applyPattern("yyyy-MM-dd");
+        this.data = sdf.parse(data);
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public String getImmagine() {
+        return immagine;
+    }
+
+    public void setImmagine(String immagine) {
+        this.immagine = immagine;
+    }
+
+    
     public String getTesto() {
         return testo;
     }
@@ -63,5 +117,15 @@ public class Articoli {
     public void setCategorie(String categorie) {
         this.categorie = categorie;
     }
+
+    public String getStato() {
+        return stato;
+    }
+
+    public void setStato(String stato) {
+        this.stato = stato;
+    }
+
+  
     
 }
